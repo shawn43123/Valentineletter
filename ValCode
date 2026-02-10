@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Maricris 💌</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #556b2f, #9cab75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(12px);
+        padding: 35px 30px;
+        border-radius: 28px;
+        text-align: center;
+        color: white;
+        width: 90%;
+        max-width: 360px;
+        box-shadow: 0 0 35px rgba(85, 107, 47, 0.7);
+        animation: fadeIn 1.8s ease;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        text-shadow: 0 0 12px rgba(255,255,255,0.5);
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        opacity: 0.95;
+    }
+
+    .buttons {
+        margin-top: 20px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 22px;
+        margin: 8px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .yes {
+        background: #6b8e23;
+        color: white;
+        box-shadow: 0 0 15px rgba(107,142,35,0.9);
+    }
+
+    .yes:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 25px rgba(107,142,35,1);
+    }
+
+    .no {
+        background: white;
+        color: #556b2f;
+    }
+
+    .heart {
+        position: absolute;
+        color: rgba(255,255,255,0.85);
+        font-size: 18px;
+        animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh); opacity: 0; }
+        20% { opacity: 1; }
+        100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.85); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Mobile extra cute tweaks */
+    @media (max-width: 480px) {
+        h1 { font-size: 1.7rem; }
+        p { font-size: 0.95rem; }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1b1c4a1b2f.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>💚 Maricris 💚</h1>
+    <p>Will you be my Valentine? 💌</p>
+
+    <div class="buttons">
+        <button class="yes" onclick="yesClicked()">Yes 💕</button>
+        <button class="no" onmouseover="moveNo()">No 🙈</button>
+    </div>
+
+    <p style="font-size:0.8rem; margin-top:15px;">(Tap anywhere to play music 🎵)</p>
+</div>
+
+<script>
+    const music = document.getElementById("bgMusic");
+
+    document.body.addEventListener("click", () => {
+        music.play();
+    }, { once: true });
+
+    function yesClicked() {
+        document.querySelector('.card').innerHTML =
+        "<h1>🥰 Yay, Maricris! 💚</h1><p>You just made my heart so happy 💐<br>Happy Valentine’s Day!</p>";
+    }
+
+    function moveNo() {
+        const btn = document.querySelector('.no');
+        btn.style.position = "absolute";
+        btn.style.top = Math.random() * 80 + "%";
+        btn.style.left = Math.random() * 80 + "%";
+    }
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 14 + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 350);
+</script>
+
+</body>
+</html>
