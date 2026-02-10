@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Maricris 🌙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #1f2a1f, #4b5d4b);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(14px);
+        padding: 38px 32px;
+        border-radius: 30px;
+        text-align: center;
+        color: #f5f7f2;
+        width: 90%;
+        max-width: 380px;
+        box-shadow: 0 0 40px rgba(60, 80, 60, 0.8);
+        animation: fadeIn 1.8s ease;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 12px;
+        letter-spacing: 1px;
+        text-shadow: 0 0 12px rgba(200,220,200,0.4);
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 18px;
+        line-height: 1.5;
+        color: #eef2ec;
+    }
+
+    .buttons {
+        margin-top: 22px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px 24px;
+        margin: 8px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .yes {
+        background: linear-gradient(135deg, #6f8f6f, #8fae8f);
+        color: #1f2a1f;
+        box-shadow: 0 0 18px rgba(140,180,140,0.9);
+    }
+
+    .yes:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 28px rgba(170,220,170,1);
+    }
+
+    .no {
+        background: #f5f7f2;
+        color: #3e4f3e;
+    }
+
+    .heart {
+        position: absolute;
+        color: rgba(220,240,220,0.9);
+        font-size: 18px;
+        animation: floatUp 7s linear infinite;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh); opacity: 0; }
+        20% { opacity: 1; }
+        100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.85); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 480px) {
+        h1 { font-size: 1.7rem; }
+        p { font-size: 0.95rem; }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Romantic Background Music -->
+<audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1b1c4a1b2f.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>🌙 Maricris 🌙</h1>
+    <p>Under this quiet moonlight,<br>will you be my Valentine? 💌</p>
+
+    <div class="buttons">
+        <button class="yes" onclick="yesClicked()">Yes 💚</button>
+        <button class="no" onmouseover="moveNo()">No 🙈</button>
+    </div>
+
+    <p style="font-size:0.8rem; margin-top:14px; opacity:0.8;">
+        (Tap anywhere to play music 🎵)
+    </p>
+</div>
+
+<script>
+    const music = document.getElementById("bgMusic");
+
+    document.body.addEventListener("click", () => {
+        music.play();
+    }, { once: true });
+
+    function yesClicked() {
+        document.querySelector('.card').innerHTML = `
+        <h1>💚 My Dearest Maricris 💚</h1>
+        <p>
+        In a world full of noise,<br>
+        you are my calm.<br><br>
+
+        Thank you for being the reason<br>
+        my days feel warmer and brighter.<br><br>
+
+        This Valentine’s Day and always,<br>
+        I choose you. 🌙💐
+        </p>
+        `;
+    }
+
+    function moveNo() {
+        const btn = document.querySelector('.no');
+        btn.style.position = "absolute";
+        btn.style.top = Math.random() * 80 + "%";
+        btn.style.left = Math.random() * 80 + "%";
+    }
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 22 + 14 + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
